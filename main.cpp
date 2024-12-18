@@ -12,11 +12,19 @@ void createArray(T1 *arr, T2 size) {
 
 // Виведення масиву
 template <typename T1, typename T2>
-void print(T1 *arr, T2 size) {
+void print_up(T1 *arr, T2 size) {
     for (int i = 0; i < size; i++) {
         cout << arr[i] << " ";
     }
     cout << endl;
+}
+
+// Виведення масиву
+template <typename T1, typename T2>
+void print_down(T1 *arr, T2 size) {
+    for (int i = size - 1; i >= 0; i--) {
+        cout << arr[i] << " ";
+    }
 }
 
 // Сортування масиву (методом бульбашки)
@@ -41,11 +49,18 @@ int main() {
 
     createArray(arr, size); // Створення масиву
     cout << "Array to be sorted :" << endl;
-    print(arr, size); // Виведення масиву
+    print_up(arr, size); // Виведення масиву
 
-    sort(arr, size); // Сортування масиву
-    cout << "Array after sorting:" << endl;
-    print(arr, size); // Виведення масиву
+    bool select = false;
+    if (select) {
+        sort(arr, size);
+        print_down(arr, size);
+    }
+    else {
+        sort(arr, size);
+        print_up(arr, size);
+    }
+
 
     delete[] arr; // Звільнення пам'яті
     return 0;
